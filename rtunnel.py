@@ -14,8 +14,11 @@ def log(x):
 
 dest = sys.argv[1]
 log('Initiating rtunnel to {}'.format(dest))
-args = 'ssh -R 22:localhost:22 -p 22000 {} -v -N'.format(dest)
-args = args.split(' ')
+args = 'ssh -R 22:localhost:22 -p 22000 -v -N'.split(' ')
+args += [
+  '-o', 'ExitOnForwardFailure yes',
+  dest,
+]
 
 
 while True:
@@ -26,5 +29,3 @@ while True:
   if diff < MIN_CYCLE_SECS:
     time.sleep(MIN_CYCLE_SECS - diff)
   log('Restarting')
-  
-
