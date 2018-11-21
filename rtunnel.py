@@ -25,7 +25,7 @@ while True:
   start = time.time()
   p = subprocess.run(args)
   diff = time.time() - start
-  log('Exited after {}s'.format(diff))
+  log('Exited after {:.3f}s'.format(diff))
   if diff < MIN_CYCLE_SECS:
     time.sleep(MIN_CYCLE_SECS - diff)
   log('Restarting')
