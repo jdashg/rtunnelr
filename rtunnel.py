@@ -5,7 +5,7 @@ import sys
 import time
 
 
-MIN_CYCLE_SECS = 60.0
+MIN_CYCLE_SECS = 6.0
 
 
 def log(x):
@@ -14,7 +14,7 @@ def log(x):
 
 dest = sys.argv[1]
 log('Initiating rtunnel to {}'.format(dest))
-args = 'ssh -R 22:localhost:22 -p 22000 -v -N'.split(' ')
+args = 'ssh -R 22:localhost:22 -p 22000 -N'.split(' ')
 args += [
   '-o', 'ExitOnForwardFailure yes',
   dest,
